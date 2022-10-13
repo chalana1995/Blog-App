@@ -11,6 +11,7 @@ import Register from "./pages/Register";
 import Home from "./pages/Home";
 import Single from "./pages/Single";
 import Write from "./pages/Write";
+import "./style.scss";
 
 const Layout = () => (
   <>
