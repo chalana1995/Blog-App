@@ -1,4 +1,7 @@
 import React from "react";
+import Edit from "../img/edit.png";
+import Delete from "../img/delete.png";
+import { Link } from "react-router-dom";
 
 const Single = () => {
   return (
@@ -11,7 +14,15 @@ const Single = () => {
             <span>john</span>
             <p>2 days ago</p>
           </div>
+          <div className="edit">
+            <Link to={`/write?edit=2`}>
+              <img src={Edit} />
+            </Link>
+            <img src={Delete} />
+          </div>
         </div>
+        <h1>Title</h1>
+        <p>paragraph</p>
       </div>
       <div className="menu">m</div>
     </div>
