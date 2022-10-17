@@ -2,7 +2,7 @@ import { db } from "../db.js";
 import bcrypt from "bcrypt";
 
 export const register = (req, res) => {
-  console.log("==req==", req);
+  // console.log("==req==", req);
   const q = "SELECT * FROM users WHERE email = ? OR username = ?";
 
   db.query(q, [req.body.email, req.body.username], (err, data) => {
