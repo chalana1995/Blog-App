@@ -1,15 +1,26 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 const Register = () => {
-  const [input, setInput] = useState({
+  const [inputs, setInputs] = useState({
     username: "",
     email: "",
     password: "",
   });
 
-  const handleInputs = (e) => {
-    setInput((prev) => ({ ...prev, [e.target.name]: e.taget.value }));
+  const handleChange = (e) => {
+    setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const res = await axios.post("/auth/register", inputs);
+      console.log(res);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -19,28 +30,25 @@ const Register = () => {
         <input
           required
           type="text"
-          name="username"
-          value={input.username}
-          onChange={handleInputs}
           placeholder="username"
+          name="username"
+          onChange={handleChange}
         />
         <input
           required
           type="email"
-          name="email"
-          value={input.email}
-          onChange={handleInputs}
           placeholder="email"
+          name="email"
+          onChange={handleChange}
         />
         <input
           required
           type="password"
-          name="password"
-          value={input.password}
-          onChange={handleInputs}
           placeholder="password"
+          name="password"
+          onChange={handleChange}
         />
-        <button>Register</button>
+        <button onClick={handleSubmit}>Register</button>
         <p>This is an Error</p>
         <span>
           Already have an account? <Link to="/login">Login</Link>

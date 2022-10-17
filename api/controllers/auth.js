@@ -4,7 +4,7 @@ import bcrypt from "bcrypt";
 export const register = (req, res) => {
   const q = "SELECT * FROM users WHERE email = ? OR username = ?";
 
-  db.query(q, [req.body.email, rea.body.username], (err, data) => {
+  db.query(q, [req.body.email, req.body.username], (err, data) => {
     if (err) {
       return res.json(err);
     }
@@ -18,7 +18,7 @@ export const register = (req, res) => {
 
     const q = "INSERT INTO users(`username`,`email`,`password`) VALUES (?)";
 
-    const values = [req, body.username, req.body.email, hash];
+    const values = [req.body.username, req.body.email, hash];
 
     db.query(q, [values], (err, data) => {
       if (err) {
