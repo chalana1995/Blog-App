@@ -8,9 +8,12 @@ const Navbar = () => {
   return (
     <div className="navbar">
       <div className="container">
-        <div className="logo">
-          <img src={Logo} />
-        </div>
+        <Link to="/">
+          <div className="logo">
+            <img src={Logo} />
+          </div>
+        </Link>
+
         <div className="links">
           <Link className="link" to="/?cat=art">
             <h6>ART</h6>
