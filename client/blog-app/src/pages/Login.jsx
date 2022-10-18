@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { AuthContext } from "../context/authContext";
 
 const Login = () => {
   const [inputs, setinputs] = useState({
@@ -10,6 +11,8 @@ const Login = () => {
 
   const [err, serErr] = useState(null);
 
+  const { login } = useContext(AuthContext);
+
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -18,7 +21,7 @@ const Login = () => {
 
   const handleClick = async (e) => {
     e.preventDefault();
-    await axios.post("/auth/login", inputs);
+    await login(inputs);
     navigate("/");
   };
 
