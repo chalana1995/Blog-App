@@ -18,7 +18,7 @@ const Home = () => {
     };
 
     fetchData();
-  }, []);
+  }, [cat]);
 
   return (
     <div className="home">
